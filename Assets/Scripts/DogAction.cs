@@ -28,28 +28,30 @@ public class DogAction : MonoBehaviour
     void processMovement() { 
 
         //Resets the movement interval to allow immediate stopping for the player
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) {
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)
+            || (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.LeftArrow))) {
             xMod = 0f;
         } 
-        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)) {
+        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)
+            || (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))) {
             yMod = 0f;
         }
         
         // Allow single direction input prioritizing horizontal over vertical
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            xMod = -0.1f;
+            xMod = -speed;
             yMod = 0f;
             rayDirection = Vector2.left;
         } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            xMod = 0.1f;
+            xMod = speed;
             yMod = 0f;
             rayDirection = Vector2.right;
         } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            yMod = 0.1f;
+            yMod = speed;
             xMod = 0f;
             rayDirection = Vector2.up;
         } else if (Input.GetKeyDown(KeyCode.DownArrow))  {
-            yMod = -0.1f;
+            yMod = -speed;
             xMod = 0f;
             rayDirection = Vector2.down;
         }
@@ -82,6 +84,8 @@ public class DogAction : MonoBehaviour
     public GameObject text;
 
     public float rayDistance = 0.6f;
+
+    public float speed = 0.25f;
     float xMod = 0f;
     float yMod = 0f;
 }
