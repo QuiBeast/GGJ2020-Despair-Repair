@@ -6,6 +6,12 @@ public class DogAction : MonoBehaviour
 {
     // Use this for initialization
     void Start() {
+        // Set Rigidbody and all default parameters
+        rigidBody = GetComponent<Rigidbody2D>();
+        rigidBody.freezeRotation = true;
+        rigidBody.gravityScale = 0;
+        rigidBody.angularDrag = 0;
+
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 10;
     }
@@ -21,7 +27,8 @@ public class DogAction : MonoBehaviour
         //Resets the movement interval to allow immediate stopping for the player
         if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) {
             xMod = 0f;
-        } else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)) {
+        } 
+        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)) {
             yMod = 0f;
         }
         
@@ -36,18 +43,17 @@ public class DogAction : MonoBehaviour
             yMod = -0.1f;
         }
 
-        transform.position = new Vector3(
-            transform.position.x + xMod,
-            transform.position.y + yMod,
-            transform.position.z + zMod);
+        // Moves the rigid body based on things
+        rigidBody.MovePosition(new Vector2(
+            rigidBody.position.x + xMod,
+            rigidBody.position.y + yMod));
     }
 
     void processCollisionCorrection() {
         if(collision) {
-            transform.position = new Vector3(
-            transform.position.x - xMod,
-            transform.position.y - yMod,
-            transform.position.z - zMod);
+            rigidBody.position = new Vector3(
+            rigidBody.position.x - xMod,
+            rigidBody.position.y - yMod);
         }
     }
 
@@ -65,6 +71,8 @@ public class DogAction : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collider) {
         Debug.Log("True");
     }
+
+    Rigidbody2D rigidBody = null;
 
     bool collision = false;
 
