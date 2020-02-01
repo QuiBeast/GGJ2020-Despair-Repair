@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class NarrationScript : MonoBehaviour
 {
     public GameObject TextBox;
@@ -10,25 +10,35 @@ public class NarrationScript : MonoBehaviour
     public GameObject Option02;
     public GameObject Option03;
     public int OptionSelected;
+  
 
     public void optionSelected1()
     {
         TextBox.GetComponent<Text>().text = "Yummy, bones!";
         OptionSelected = 1;
+        SceneManager.LoadScene("BaseMap", LoadSceneMode.Single);
     }
 
     public void optionSelected2()
     {
         TextBox.GetComponent<Text>().text = "Isn't that where we first met?!";
         OptionSelected = 2;
+        SceneManager.LoadScene("BaseMapLeft", LoadSceneMode.Additive);
     }
 
     public void optionSelected3()
     {
         TextBox.GetComponent<Text>().text = "I love walks!";
         OptionSelected = 3;
+        SceneManager.LoadScene("BaseMapRight", LoadSceneMode.Additive);
     }
+
+
+    private void Start()
+    {
     
+    }
+
     void Update()
     {
         if (OptionSelected >= 1)
@@ -37,6 +47,8 @@ public class NarrationScript : MonoBehaviour
             Option02.SetActive(false);
             Option03.SetActive(false);
         }
-        
+
+       
+
     }
 }
