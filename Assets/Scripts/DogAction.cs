@@ -12,14 +12,17 @@ public class DogAction : MonoBehaviour
         rigidBody.gravityScale = 0;
         rigidBody.angularDrag = 0;
 
+        text = GameObject.FindWithTag("InfoToggle");
+
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 10;
     }
 
     // Update is called once per frame
     void Update() {
+        Debug.DrawRay(transform.position, rayDirection, Color.cyan);
         processMovement();
-        processCollisionCorrection();
+        processItemCollection();
     }
 
     void processMovement() { 
@@ -35,12 +38,20 @@ public class DogAction : MonoBehaviour
         // Allow single direction input prioritizing horizontal over vertical
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             xMod = -0.1f;
+            yMod = 0f;
+            rayDirection = Vector2.left;
         } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
             xMod = 0.1f;
+            yMod = 0f;
+            rayDirection = Vector2.right;
         } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
             yMod = 0.1f;
+            xMod = 0f;
+            rayDirection = Vector2.up;
         } else if (Input.GetKeyDown(KeyCode.DownArrow))  {
             yMod = -0.1f;
+            xMod = 0f;
+            rayDirection = Vector2.down;
         }
 
         // Moves the rigid body based on things
@@ -49,34 +60,28 @@ public class DogAction : MonoBehaviour
             rigidBody.position.y + yMod));
     }
 
-    void processCollisionCorrection() {
-        if(collision) {
-            rigidBody.position = new Vector3(
-            rigidBody.position.x - xMod,
-            rigidBody.position.y - yMod);
-        }
-    }
-
-    bool checkCollision (Collider2D collider) {
-        if(collider.GetComponent<Collider>()) {
-            Debug.Log("True");
-            collision = true;
+    void processItemCollection() {
+        RaycastHit2D hit = Physics2D.Raycast(rigidBody.position, rayDirection, rayDistance);
+        if (hit) {
+            if (hit.collider.CompareTag("collection")) {
+                text.SetActive(true);
+            } else {
+                text.SetActive(false);
+            }
         } else {
-            Debug.Log("False");
-            collision = false;
+            text.SetActive(false);
         }
-        return collision;
     }
 
     void OnCollisionEnter2D(Collision2D collider) {
-        Debug.Log("True");
+        
     }
 
     Rigidbody2D rigidBody = null;
+    Vector2 rayDirection = Vector2.down;
+    public GameObject text;
 
-    bool collision = false;
-
+    public float rayDistance = 0.6f;
     float xMod = 0f;
     float yMod = 0f;
-    float zMod = 0f;
 }
