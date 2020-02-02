@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DespairRepair;
 
 public class DogAction : MonoBehaviour
 {
@@ -80,17 +81,18 @@ public class DogAction : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(rigidBody.position, rayDirection, rayDistance);
         if (hit) {
-            //if (hit.collider.GetComponent<BodyPart>) {
-            if (hit.collider.CompareTag("collection")) {
+            if (hit.collider.GetComponent<BodyPartObject>()) {
                 text.SetActive(true);
+                if (Input.GetKeyUp(KeyCode.Space)) {
+                    GameObject bodyPart = hit.collider.gameObject;
+                    BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
+                    bodyManager.CollectBodyPart(
+                        hit.collider.GetComponent<BodyPartObject>().GetComponent<BodyPartObject>().part,
+                        hit.collider.GetComponent<BodyPartObject>().GetComponent<BodyPartObject>().isCorrect);
+                    hit.collider.gameObject.SetActive(false);
+                }
             } else {
                 text.SetActive(false);
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space)) {
-
-                hit.collider.gameObject.SetActive(false);
-
             }
         } else {
             text.SetActive(false);
