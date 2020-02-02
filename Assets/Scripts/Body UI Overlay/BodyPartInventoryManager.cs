@@ -33,8 +33,10 @@ namespace DespairRepair
         {
             if (test == 0) 
             { 
-                this.CollectBodyPart(BodyPartTypes.torso, true);
-                this.CollectBodyPart(BodyPartTypes.leftArm, false);
+                this.CollectBodyPart(BodyPartTypes.head, true);
+                this.CollectBodyPart(BodyPartTypes.rightArm, true);
+
+                /*this.CollectBodyPart(BodyPartTypes.leftArm, false);
                 this.CollectBodyPart(BodyPartTypes.rightLeg, true);
                 this.CollectBodyPart(BodyPartTypes.head, false);
                 this.RemoveBodyPart(BodyPartTypes.head);
@@ -43,16 +45,17 @@ namespace DespairRepair
                 this.RemoveLastBodyPart();
 
                 print(this.AreAllBodyPartsCollected());
-                print(this.GetNumberOfCorrectBodyPartsCollected());
-                
+                print(this.GetNumberOfCorrectBodyPartsCollected());*/
+
                 test++;
             }
         }
 
         public void CollectBodyPart(BodyPartTypes bodyPartType, bool isCorrectPart)
         {
-            UIBodyPart part = this.GetBodyPart(bodyPartType);
-            
+            //UIBodyPart part = this.GetBodyPart(bodyPartType);
+            TestUIBodyPart part = this.GetTestBodyPart(bodyPartType);
+
             if (part != null && !part.IsCollected())
             {
                 part.Collect(isCorrectPart);
@@ -128,6 +131,22 @@ namespace DespairRepair
             UIBodyPart[] partList = GameObject.FindObjectsOfType<UIBodyPart>();
               
             foreach (UIBodyPart bodyPart in partList)
+            {
+                if (bodyPart.partType == partType)
+                {
+                    part = bodyPart;
+                }
+            }
+
+            return part;
+        }
+
+        private TestUIBodyPart GetTestBodyPart(BodyPartTypes partType)
+        {
+            TestUIBodyPart part = null;
+            TestUIBodyPart[] partList = GameObject.FindObjectsOfType<TestUIBodyPart>();
+
+            foreach (TestUIBodyPart bodyPart in partList)
             {
                 if (bodyPart.partType == partType)
                 {

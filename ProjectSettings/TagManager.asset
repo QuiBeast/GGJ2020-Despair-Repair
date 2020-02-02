@@ -6,6 +6,14 @@ TagManager:
   tags:
   - collection
   - InfoToggle
+  - UI-Head
+  - UI-Left-Leg
+  - UI-Right-Arm
+  - UI-Left-Arm
+  - UI-Torso
+  - UI-Body
+  - UI-Head-Outline
+  - UI-Right-Arm-Outline
   layers:
   - Default
   - TransparentFX
@@ -48,4 +56,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 3418896005
+    locked: 0
+  - name: BodyOverlay
+    uniqueID: 1882317529
     locked: 0

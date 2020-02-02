@@ -211,6 +211,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3480829120494454228, guid: 26ebfdb5822eef247b0cc9fa28ec4e21,
+        type: 3}
+      propertyPath: m_Name
+      value: Right Arm Outline0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480829120502546129, guid: 26ebfdb5822eef247b0cc9fa28ec4e21,
+        type: 3}
+      propertyPath: m_Name
+      value: Right Arm Outline1
+      objectReference: {fileID: 0}
     - target: {fileID: 5477575498672824452, guid: 26ebfdb5822eef247b0cc9fa28ec4e21,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -311,6 +321,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305612670111154707, guid: 26ebfdb5822eef247b0cc9fa28ec4e21,
+        type: 3}
+      propertyPath: m_Name
+      value: Right Arm Found0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305612670237390119, guid: 26ebfdb5822eef247b0cc9fa28ec4e21,
+        type: 3}
+      propertyPath: m_Name
+      value: Right Arm Found1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305612670490400725, guid: 26ebfdb5822eef247b0cc9fa28ec4e21,
+        type: 3}
+      propertyPath: m_Name
+      value: Right Arm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26ebfdb5822eef247b0cc9fa28ec4e21, type: 3}
