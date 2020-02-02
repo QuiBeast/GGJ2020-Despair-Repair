@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 public class FadeInAndOut : MonoBehaviour
 {
-    public Animator animator;
+    //public Animator animator;
 
     private int levelToLoad;
 
@@ -24,8 +24,8 @@ public class FadeInAndOut : MonoBehaviour
 
     public void FadeToLevel (int levelIndex) 
     {
-        levelToLoad = levelIndex;
-        animator.SetTrigger("FadeOut");
+        SceneManager.LoadScene(levelIndex);
+        //animator.SetTrigger("FadeOut");
     }
 
     public void OnFadeComplete()
