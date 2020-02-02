@@ -305,6 +305,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.571548, y: 3.1905193}
   m_EdgeRadius: 0
+<<<<<<< Updated upstream
 --- !u!61 &206808354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -331,6 +332,87 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.571548, y: 3.1905193}
   m_EdgeRadius: 0
+=======
+--- !u!1001 &271780983
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9222561644279492961, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644279492961, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.17506397
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.4522388
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5874321
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700567, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222561644389700568, guid: e8400fcd54bb6e840a62a83b7147c284,
+        type: 3}
+      propertyPath: m_Name
+      value: Limb_Body_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8400fcd54bb6e840a62a83b7147c284, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &403630571
 GameObject:
   m_ObjectHideFlags: 0
