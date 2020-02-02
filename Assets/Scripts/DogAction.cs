@@ -19,6 +19,9 @@ public class DogAction : MonoBehaviour
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 20;
+
+        //Set Tag
+        gameObject.tag = "Player";
     }
 
     // Update is called once per frame
