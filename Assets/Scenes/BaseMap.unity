@@ -5357,10 +5357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dog
       objectReference: {fileID: 0}
-    - target: {fileID: 4824456479062858035, guid: 0e02122ef1e98554e918c84298d017f7,
+    - target: {fileID: 4824456479062858037, guid: 0e02122ef1e98554e918c84298d017f7,
         type: 3}
-      propertyPath: m_TagString
-      value: Player
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4824456479062858039, guid: 0e02122ef1e98554e918c84298d017f7,
         type: 3}
