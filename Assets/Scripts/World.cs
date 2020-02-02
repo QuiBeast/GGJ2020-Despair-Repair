@@ -33,6 +33,12 @@ public class World : SceneController
         } else if (prevScene == "BaseMap" && currentScene == "BaseMapRight")
         {
             player.transform.position = new Vector2(-8f, 0f);
+        } else if (prevScene == "BaseMapLeft2" && currentScene == "BaseMapLeft3")
+        {
+            player.transform.position = new Vector2(-4f, 6f);
+        } else if (prevScene == "BaseMapLeft3" && currentScene == "BaseMapLeft2")
+        {
+            player.transform.position = new Vector2(-4f, -6f);
         }
 
     }

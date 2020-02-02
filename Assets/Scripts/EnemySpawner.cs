@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     {
         startTime = Time.time;
         enemies = new List<Enemy>();
+        this.verticalOffset = 2;
     }
 
     // Update is called once per frame
@@ -21,8 +22,11 @@ public class EnemySpawner : MonoBehaviour
     public void spawnEnemy() {
         deltaTime = Time.time;
         enemies = GameObject.FindObjectsOfType<Enemy>().ToList();
+
         if (enemies.Count < maxLength && (deltaTime - startTime) > spawnDelay) {
-            Enemy newEnemy = GameObject.Instantiate(enemyType);
+            Transform spawnLoc = this.transform;
+            spawnLoc.position.Set( spawnLoc.position.x, spawnLoc.position.y - verticalOffset, spawnLoc.position.z);
+            Enemy newEnemy = GameObject.Instantiate(enemyType, spawnLoc);
             startTime = deltaTime;
         }
     }
@@ -30,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
     double deltaTime = 0.0d;
     double startTime = 0.0d;
 
+    public float verticalOffset;
     public int spawnDelay;
     public int maxLength;
     public Enemy enemyType;
