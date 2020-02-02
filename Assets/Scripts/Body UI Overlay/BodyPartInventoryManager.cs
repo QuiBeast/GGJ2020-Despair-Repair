@@ -43,7 +43,7 @@ namespace DespairRepair
             }
         }
 
-        public void CollectBodyPart(BodyPartTypes bodyPartType, bool isCorrectPart)
+        /*public void CollectBodyPart(BodyPartTypes bodyPartType, bool isCorrectPart)
         {
             UIBodyPart part = this.GetBodyPart(bodyPartType);
 
@@ -57,9 +57,29 @@ namespace DespairRepair
                     this.correctPartCount++;
                 }
             }
+        }*/
+
+        public void CollectBodyPart(GameObject bodyPart)
+        {
+            BodyPartObject bodyPartObj = bodyPart.GetComponent<BodyPartObject>();
+            print(bodyPartObj);
+            UIBodyPart part = this.GetBodyPart(bodyPartObj.part);
+            print(part);
+            print(part.IsCollected());
+
+            if (part != null && !part.IsCollected())
+            {
+                part.Collect(bodyPart);
+                this.collectedParts.Add(part);
+
+                if (bodyPartObj.isCorrect)
+                {
+                    this.correctPartCount++;
+                }
+            }
         }
 
-        public UIBodyPart RemoveLastBodyPart()
+        public GameObject RemoveLastBodyPart()
         {
             if (this.collectedParts.Count > 0)
             {
@@ -71,10 +91,10 @@ namespace DespairRepair
                         this.correctPartCount--;
                     }
 
-                    lastBodyPart.Uncollect();
+                    GameObject uncollectedPart = lastBodyPart.Uncollect();
                     this.collectedParts.RemoveAt(this.collectedParts.Count - 1);
 
-                    return lastBodyPart;
+                    return uncollectedPart;
                 }
                 
                 return null;

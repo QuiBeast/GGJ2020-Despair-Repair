@@ -93,16 +93,17 @@ public class DogAction : MonoBehaviour
     void processItemCollection()
     {
         RaycastHit2D hit = Physics2D.Raycast(rigidBody.position, rayDirection, rayDistance);
-        if (text != null) {
+        //if (text != null) {
             if (hit) {
                 if (hit.collider.GetComponent<BodyPartObject>()) {
                     text.SetActive(true);
                     if (Input.GetKeyUp(KeyCode.Space)) {
                         GameObject bodyPart = hit.collider.gameObject;
                         BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
-                        bodyManager.CollectBodyPart(
+                        /*bodyManager.CollectBodyPart(
                             hit.collider.GetComponent<BodyPartObject>().GetComponent<BodyPartObject>().part,
-                            hit.collider.GetComponent<BodyPartObject>().GetComponent<BodyPartObject>().isCorrect);
+                            hit.collider.GetComponent<BodyPartObject>().GetComponent<BodyPartObject>().isCorrect);*/
+                        bodyManager.CollectBodyPart(bodyPart);
                         hit.collider.gameObject.SetActive(false);
                     }
                 } else if (hit.collider.GetComponent<Enemy>()) {
@@ -114,7 +115,7 @@ public class DogAction : MonoBehaviour
             } else {
                 text.SetActive(false);
             }
-        }
+        //}
     }
 
     void OnCollisionEnter2D(Collision2D collider) {
