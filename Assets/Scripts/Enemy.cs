@@ -21,10 +21,8 @@ public class Enemy : MonoBehaviour
         if (collision.collider.CompareTag("Player")) {
             BodyPartInventoryManager manager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
             manager.RemoveLastBodyPart();
-            Debug.Log("Destroyed");
-        }
+        } 
 
-        Debug.Log("Dead");
         Destroy(this.gameObject);
     }
 }

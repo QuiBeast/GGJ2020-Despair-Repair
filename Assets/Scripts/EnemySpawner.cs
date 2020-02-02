@@ -23,7 +23,6 @@ public class EnemySpawner : MonoBehaviour
         enemies = GameObject.FindObjectsOfType<Enemy>().ToList();
         if (enemies.Count < maxLength && (deltaTime - startTime) > spawnDelay) {
             Enemy newEnemy = GameObject.Instantiate(enemyType);
-            Debug.Log("Spawning Enemy");
             startTime = deltaTime;
         }
     }
