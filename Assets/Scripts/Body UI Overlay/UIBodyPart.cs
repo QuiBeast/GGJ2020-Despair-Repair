@@ -6,8 +6,6 @@ namespace DespairRepair
 {
     public class UIBodyPart : MonoBehaviour
     {
-        private bool isCollected;
-        private bool isCorrectPart;
         public BodyPartTypes partType;
 
         private const string OUTLINE = " Outline";
@@ -18,8 +16,6 @@ namespace DespairRepair
         // Start is called before the first frame update
         void Start()
         {
-            this.isCollected = false;
-            this.isCorrectPart = false;
             this.bodyPart = null;
 
             this.DisableRenderers(GameObject.Find(this.name + FOUND));
@@ -38,7 +34,6 @@ namespace DespairRepair
         public void Collect(GameObject bodyPart)
         {
             this.bodyPart = bodyPart;
-            print(this.bodyPart);
 
             this.DisableRenderers(GameObject.Find(this.name + OUTLINE));
             this.EnableRenderers(GameObject.Find(this.name + FOUND));

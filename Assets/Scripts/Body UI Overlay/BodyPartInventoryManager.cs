@@ -62,10 +62,7 @@ namespace DespairRepair
         public void CollectBodyPart(GameObject bodyPart)
         {
             BodyPartObject bodyPartObj = bodyPart.GetComponent<BodyPartObject>();
-            print(bodyPartObj);
             UIBodyPart part = this.GetBodyPart(bodyPartObj.part);
-            print(part);
-            print(part.IsCollected());
 
             if (part != null && !part.IsCollected())
             {
