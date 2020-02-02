@@ -13,6 +13,8 @@ public class DogAction : MonoBehaviour
         rigidBody.gravityScale = 0;
         rigidBody.angularDrag = 0;
 
+        anim = GetComponent<Animator>();
+
         text = GameObject.FindWithTag("InfoToggle");
 
         QualitySettings.vSyncCount = 0;
@@ -56,6 +58,11 @@ public class DogAction : MonoBehaviour
             xMod = 0f;
             rayDirection = Vector2.down;
         }
+
+        anim.SetFloat("Horizontal", xMod);
+        anim.SetFloat("Vertical", yMod);
+        anim.SetFloat("Horizontal View", xMod);
+        anim.SetFloat("Vertical View", yMod);
 
         // Moves the rigid body based on things
         rigidBody.MovePosition(new Vector2(
@@ -105,6 +112,7 @@ public class DogAction : MonoBehaviour
         
     }
 
+    Animator anim = null;
     Rigidbody2D rigidBody = null;
     Vector2 rayDirection = Vector2.down;
     public GameObject text;
