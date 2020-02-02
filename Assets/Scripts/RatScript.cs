@@ -8,6 +8,7 @@ public class RatScript : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        this.speed = 0.1f;
     }
 
     // Update is called once per frame
@@ -17,7 +18,8 @@ public class RatScript : Enemy
     }
 
     void processMovement() {
-        this.transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
+        this.transform.position = new Vector2(transform.position.x + speed, transform.position.y);
     }
 
+    public float speed;
 }
