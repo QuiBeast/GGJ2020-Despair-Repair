@@ -337,6 +337,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: optionSelected1
       objectReference: {fileID: 0}
+    - target: {fileID: 3875906038145287962, guid: f1c502708eafc3843819333d478ab749,
+        type: 3}
+      propertyPath: m_Text
+      value: The graveyard...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875906038145287963, guid: f1c502708eafc3843819333d478ab749,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -114
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875906038145287963, guid: f1c502708eafc3843819333d478ab749,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 74.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875906038145287963, guid: f1c502708eafc3843819333d478ab749,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875906038145287963, guid: f1c502708eafc3843819333d478ab749,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 252.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3875906038987180777, guid: f1c502708eafc3843819333d478ab749,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -346,6 +371,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: optionSelected3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875906038987180783, guid: f1c502708eafc3843819333d478ab749,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -248
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875906039623876493, guid: f1c502708eafc3843819333d478ab749,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -184
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875906039623876493, guid: f1c502708eafc3843819333d478ab749,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 3875906039623876495, guid: f1c502708eafc3843819333d478ab749,
         type: 3}
