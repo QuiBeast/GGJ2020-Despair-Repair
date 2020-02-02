@@ -4,26 +4,39 @@ using UnityEngine;
 
 namespace DespairRepair
 {
-    public class UIBodyPart : MonoBehaviour
+    public class OldUIBodyPart : MonoBehaviour
     {
         private bool isCollected;
         private bool isCorrectPart;
-        public BodyPartTypes partType;
+        //public BodyPartTypes partType;
+
+        private SpriteRenderer spriteRenderer;
+        private Sprite collectedSprite;
+
+        private const string SPRITE_DIRECTORY = "Sprites/body parts/";
+
+        private const string HEAD_SPRITE = "head";
+        private const string TORSO_SPRITE = "torso";
+        private const string LEFT_ARM_SPRITE = "left-arm";
+        private const string RIGHT_ARM_SPRITE = "right-arm";
+        private const string LEFT_LEG_SPRITE = "left-leg";
+        private const string RIGHT_LEG_SPRITE = "right-leg";
+        
+        private const string COLLECTED = "-collected";
+        private const string INCORRECT_SUFFIX = "-incorrect";
 
         private const string OUTLINE = " Outline";
         private const string FOUND = " Found";
-        
+
+
         // Start is called before the first frame update
         void Start()
         {
             this.isCollected = false;
             this.isCorrectPart = false;
-
-            this.DisableRenderers(GameObject.Find(this.name + FOUND));
-            this.EnableRenderers(GameObject.Find(this.name + OUTLINE));
+            this.spriteRenderer = GetComponent<SpriteRenderer>();
         }
-
-        public void Collect(bool isCorrectPart)
+        public new void Collect(bool isCorrectPart)
         {
             this.isCollected = true;
             this.isCorrectPart = isCorrectPart;
@@ -32,28 +45,21 @@ namespace DespairRepair
             this.EnableRenderers(GameObject.Find(this.name + FOUND));
         }
 
-        public void Uncollect()
+        private void DisableRenderers(GameObject gameObject)
         {
-            this.isCollected = false;
-
-            this.DisableRenderers(GameObject.Find(this.name + FOUND));
-            this.EnableRenderers(GameObject.Find(this.name + OUTLINE));
-        }
-
-            private void DisableRenderers(GameObject gameObject)
-        {
+            if (gameObject == null)
+            {
+                print(this.name);
+            }
             SpriteRenderer[] renderers = gameObject.GetComponents<SpriteRenderer>();
 
-            //If no renderers are found, we need to check if there are child game objects that have renderers. Some of the body parts are composites of multiple sprites
-            //that need multiple sprite renderers enabled/disabled.
             if (renderers == null || renderers.Length == 0)
             {
                 int i = 0;
-                List<SpriteRenderer> renderersList = new List<SpriteRenderer>();
 
-                //Child objects should be named like "Torso Found0", "Torso Found1", and so on. So long as we find children with this naming convention, add their renderers to the list.
                 while (GameObject.Find(gameObject.name + i) != null)
                 {
+                    List<SpriteRenderer> renderersList = new List<SpriteRenderer>();
                     GameObject gameObj = GameObject.Find(gameObject.name + i);
 
                     if (gameObj != null)
@@ -65,13 +71,12 @@ namespace DespairRepair
                             renderersList.Add(renderer);
                         }
                     }
-                    
+
+                    renderers = renderersList.ToArray();
                     i++;
                 }
-                renderers = renderersList.ToArray();
             }
 
-            //Disable the renderers.
             foreach (SpriteRenderer renderer in renderers)
             {
                 renderer.enabled = false;
@@ -81,16 +86,13 @@ namespace DespairRepair
         {
             SpriteRenderer[] renderers = gameObject.GetComponents<SpriteRenderer>();
 
-            //If no renderers are found, we need to check if there are child game objects that have renderers. Some of the body parts are composites of multiple sprites
-            //that need multiple sprite renderers enabled/disabled.
             if (renderers == null || renderers.Length == 0)
             {
                 int i = 0;
-                List<SpriteRenderer> renderersList = new List<SpriteRenderer>();
 
-                //Child objects should be named like "Torso Found0", "Torso Found1", and so on. So long as we find children with this naming convention, add their renderers to the list.
                 while (GameObject.Find(gameObject.name + i) != null)
                 {
+                    List<SpriteRenderer> renderersList = new List<SpriteRenderer>();
                     GameObject gameObj = GameObject.Find(gameObject.name + i);
 
                     if (gameObj != null)
@@ -103,18 +105,17 @@ namespace DespairRepair
                         }
                     }
 
+                    renderers = renderersList.ToArray();
                     i++;
                 }
-                renderers = renderersList.ToArray();
             }
 
-            //Enable the renderers.
             foreach (SpriteRenderer renderer in renderers)
             {
                 renderer.enabled = true;
             }
         }
-               
+
         public bool IsCollected()
         {
             return this.isCollected;
