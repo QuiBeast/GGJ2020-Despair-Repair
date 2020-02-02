@@ -92,7 +92,7 @@ public class NarrationScript : MonoBehaviour
             else if (OptionSelected == 4)
             {
                //Option04.SetActive(false);
-                levelToLoad = "OpeningNarration";
+                levelToLoad = "InitialScreen";
                 StartCoroutine(ExecuteAfterTime(screenDelay));
             }
             else if (OptionSelected == 5)

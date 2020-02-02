@@ -121,18 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &240569696 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6645469426544854411, guid: ac9078c027dc16847be67785e1196a33,
-    type: 3}
-  m_PrefabInstance: {fileID: 1910544695}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6523b44e2a2f346488b538b4ae3d8e2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &281487229
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,8 +624,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 240569696}
-        m_MethodName: optionSelected4
+      - m_Target: {fileID: 1910544697}
+        m_MethodName: optionSelected6
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1217,7 +1205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 240569696}
+      - m_Target: {fileID: 1910544697}
         m_MethodName: optionSelected4
         m_Mode: 1
         m_Arguments:
@@ -1825,8 +1813,37 @@ PrefabInstance:
       propertyPath: Option06
       value: 
       objectReference: {fileID: 685000213}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6645469426544854411, guid: ac9078c027dc16847be67785e1196a33, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ac9078c027dc16847be67785e1196a33, type: 3}
+--- !u!1 &1910544696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6617253796544686177, guid: ac9078c027dc16847be67785e1196a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1910544695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1910544697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910544696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1068d22ac2ddfdc41b5a30292ab16cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextBox: {fileID: 0}
+  Option01: {fileID: 0}
+  Option02: {fileID: 0}
+  Option03: {fileID: 0}
+  Option04: {fileID: 1013706615}
+  Option05: {fileID: 1916411957}
+  Option06: {fileID: 685000213}
+  OptionSelected: 0
+  levelToLoad: 
+  screenDelay: 1.5
 --- !u!1 &1916411957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,8 +1926,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 240569696}
-        m_MethodName: optionSelected4
+      - m_Target: {fileID: 1910544697}
+        m_MethodName: optionSelected5
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
