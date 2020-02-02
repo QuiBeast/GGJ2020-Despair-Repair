@@ -8,7 +8,7 @@ namespace DespairRepair
     {
         private bool isCollected;
         private bool isCorrectPart;
-        public BodyPartTypes partType;
+        //public BodyPartTypes partType;
 
         //private SpriteRenderer spriteRenderer;
         //private Sprite collectedSprite;
@@ -51,18 +51,26 @@ namespace DespairRepair
 
         public new void Collect(bool isCorrectPart)
         {
+            print("collecting");
+
             this.isCollected = true;
             this.isCorrectPart = isCorrectPart;
 
             //if (this.partType == BodyPartTypes.head)
             //{
-                this.DisableRenderers(GameObject.Find(this.name + OUTLINE));
+            print(this.name + OUTLINE);
+            print(this.name + FOUND);
+            this.DisableRenderers(GameObject.Find(this.name + OUTLINE));
                 this.EnableRenderers(GameObject.Find(this.name + FOUND));
             //}
         }
 
         private void DisableRenderers(GameObject gameObject)
         {
+            if (gameObject == null)
+            {
+                print(this.name);
+            }
             SpriteRenderer[] renderers = gameObject.GetComponents<SpriteRenderer>();
 
             if (renderers == null || renderers.Length == 0)
@@ -124,7 +132,6 @@ namespace DespairRepair
 
             foreach (SpriteRenderer renderer in renderers)
             {
-                print(renderer);
                 renderer.enabled = true;
             }
         }

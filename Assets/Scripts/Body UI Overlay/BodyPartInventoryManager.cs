@@ -33,19 +33,19 @@ namespace DespairRepair
         {
             if (test == 0) 
             { 
-                this.CollectBodyPart(BodyPartTypes.head, true);
-                this.CollectBodyPart(BodyPartTypes.rightArm, true);
+                //this.CollectBodyPart(BodyPartTypes.head, true);
+                //this.CollectBodyPart(BodyPartTypes.torso, true);
 
-                /*this.CollectBodyPart(BodyPartTypes.leftArm, false);
+                this.CollectBodyPart(BodyPartTypes.leftArm, false);
                 this.CollectBodyPart(BodyPartTypes.rightLeg, true);
                 this.CollectBodyPart(BodyPartTypes.head, false);
-                this.RemoveBodyPart(BodyPartTypes.head);
-                this.RemoveBodyPart(BodyPartTypes.torso);
-                this.RemoveLastBodyPart();
-                this.RemoveLastBodyPart();
+                //this.RemoveBodyPart(BodyPartTypes.head);
+                //this.RemoveBodyPart(BodyPartTypes.torso);
+                //this.RemoveLastBodyPart();
+                //this.RemoveLastBodyPart();
 
                 print(this.AreAllBodyPartsCollected());
-                print(this.GetNumberOfCorrectBodyPartsCollected());*/
+                print(this.GetNumberOfCorrectBodyPartsCollected());
 
                 test++;
             }
@@ -55,6 +55,7 @@ namespace DespairRepair
         {
             //UIBodyPart part = this.GetBodyPart(bodyPartType);
             TestUIBodyPart part = this.GetTestBodyPart(bodyPartType);
+            print("collecting");
 
             if (part != null && !part.IsCollected())
             {
