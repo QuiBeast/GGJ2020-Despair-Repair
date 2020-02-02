@@ -15,7 +15,11 @@
   assetBundleName: 
   assetBundleVariant: 
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 892c791da2dcdc248bb48b50241ed1bd
+=======
+guid: b4893a3af3bb0a14a89e5f97925eff5c
+>>>>>>> Stashed changes
 TextureImporter:
   externalObjects: {}
   internalIDToNameTable: []

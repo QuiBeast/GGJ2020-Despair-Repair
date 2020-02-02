@@ -9,6 +9,9 @@ public class NarrationScript : MonoBehaviour
     public GameObject Option01;
     public GameObject Option02;
     public GameObject Option03;
+    public GameObject Option04;
+    public GameObject Option05;
+    public GameObject Option06;
     public int OptionSelected;
   
 
@@ -23,14 +26,35 @@ public class NarrationScript : MonoBehaviour
     {
         TextBox.GetComponent<Text>().text = "Isn't that where we first met?!";
         OptionSelected = 2;
-        SceneManager.LoadScene("BaseMapLeft", LoadSceneMode.Additive);
+        SceneManager.LoadScene("BaseMapLeft", LoadSceneMode.Single);
     }
 
     public void optionSelected3()
     {
         TextBox.GetComponent<Text>().text = "I love walks!";
         OptionSelected = 3;
-        SceneManager.LoadScene("BaseMapRight", LoadSceneMode.Additive);
+        SceneManager.LoadScene("BaseMapRight", LoadSceneMode.Single);
+    }
+
+    public void optionSelected4()
+    {
+        //TextBox.GetComponent<Text>().text = "I love walks!";
+        OptionSelected = 4;
+        SceneManager.LoadScene("OpeningNarration", LoadSceneMode.Single);
+    }
+
+    public void optionSelected5()
+    {
+        //TextBox.GetComponent<Text>().text = "I love walks!";
+        OptionSelected = 5;
+        SceneManager.LoadScene("OpeningNarration", LoadSceneMode.Single);
+    }
+
+    public void optionSelected6()
+    {
+        //TextBox.GetComponent<Text>().text = "I love walks!"; 
+        OptionSelected = 6;
+        Application.Quit();
     }
 
 
@@ -46,6 +70,9 @@ public class NarrationScript : MonoBehaviour
             Option01.SetActive(false);
             Option02.SetActive(false);
             Option03.SetActive(false);
+            Option04.SetActive(false);
+            Option05.SetActive(false);
+            Option06.SetActive(false);
         }
 
        
