@@ -14,7 +14,7 @@ public class RatScript : Enemy
     // Update is called once per frame
     void Update()
     {
-        processMovement();
+        //processMovement();
     }
 
     void processMovement() {
