@@ -41,6 +41,13 @@ namespace DespairRepair
 
                 test++;
             }
+
+            if (AreAllBodyPartsCollected())
+            {
+                Time.timeScale = 0;
+                GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Animator>().enabled = false;
+            }
+            
         }
 
         /*public void CollectBodyPart(BodyPartTypes bodyPartType, bool isCorrectPart)
