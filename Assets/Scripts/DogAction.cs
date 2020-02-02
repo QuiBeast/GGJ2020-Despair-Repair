@@ -28,7 +28,8 @@ public class DogAction : MonoBehaviour
     void Update() {
         Debug.DrawRay(transform.position, rayDirection, Color.cyan);
         processMovement();
-        processItemCollection();
+        //processItemCollection();
+        ProcessCollisions();
     }
 
     void processMovement() { 
@@ -93,7 +94,51 @@ public class DogAction : MonoBehaviour
     //    }
     //}
 
-    void processItemCollection()
+    private void ProcessCollisions()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rigidBody.position, rayDirection, rayDistance);
+        if (hit)
+        {
+            if (hit.collider.GetComponent<BodyPartObject>())
+            {
+                this.processBodyPartCollision(hit);
+            } else if (hit.collider.GetComponent<Enemy>())
+            {
+                this.processEnemyCollision(hit);
+            }
+        }
+        else
+        {
+            text.SetActive(false);
+        }
+    }
+
+    private void processBodyPartCollision(RaycastHit2D hit)
+    {
+        if (text != null)
+        {
+            text.SetActive(true);
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                GameObject bodyPart = hit.collider.gameObject;
+                BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
+                bodyManager.CollectBodyPart(bodyPart);
+                hit.collider.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void processEnemyCollision(RaycastHit2D hit)
+    {
+        BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
+        GameObject bodyPart = bodyManager.RemoveLastBodyPart();
+        if (bodyPart != null)
+        {
+            bodyPart.SetActive(true);
+        }
+    }
+
+    /*void processItemCollection()
     {
         RaycastHit2D hit = Physics2D.Raycast(rigidBody.position, rayDirection, rayDistance);
         if (text != null) {
@@ -103,14 +148,9 @@ public class DogAction : MonoBehaviour
                     if (Input.GetKeyUp(KeyCode.Space)) {
                         GameObject bodyPart = hit.collider.gameObject;
                         BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
-                        bodyManager.CollectBodyPart(
-                            hit.collider.GetComponent<BodyPartObject>().GetComponent<BodyPartObject>().part,
-                            hit.collider.GetComponent<BodyPartObject>().GetComponent<BodyPartObject>().isCorrect);
+                        bodyManager.CollectBodyPart(bodyPart);
                         hit.collider.gameObject.SetActive(false);
                     }
-                } else if (hit.collider.GetComponent<Enemy>()) {
-                    BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
-                    bodyManager.RemoveLastBodyPart();
                 } else {
                     text.SetActive(false);
                 }
@@ -118,12 +158,8 @@ public class DogAction : MonoBehaviour
                 text.SetActive(false);
             }
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D collider) {
-        
-    }
-
+    }*/
+    
     Animator anim = null;
     Rigidbody2D rigidBody = null;
     Vector2 rayDirection = Vector2.down;

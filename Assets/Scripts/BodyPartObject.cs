@@ -11,4 +11,6 @@ public class BodyPartObject : MonoBehaviour
 
     public BodyPartTypes part;
     public bool isCorrect;
+    public float x;
+    public float y;
 }

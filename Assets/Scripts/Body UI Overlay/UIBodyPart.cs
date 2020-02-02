@@ -6,43 +6,48 @@ namespace DespairRepair
 {
     public class UIBodyPart : MonoBehaviour
     {
-        private bool isCollected;
-        private bool isCorrectPart;
         public BodyPartTypes partType;
 
         private const string OUTLINE = " Outline";
         private const string FOUND = " Found";
 
-        private BodyPartObject bodyPart;
+        private GameObject bodyPart;
         
         // Start is called before the first frame update
         void Start()
         {
-            this.isCollected = false;
-            this.isCorrectPart = false;
             this.bodyPart = null;
 
             this.DisableRenderers(GameObject.Find(this.name + FOUND));
             this.EnableRenderers(GameObject.Find(this.name + OUTLINE));
         }
 
-        public void Collect(bool isCorrectPart)
+        /*public void Collect(bool isCorrectPart)
         {
             this.isCollected = true;
             this.isCorrectPart = isCorrectPart;
 
             this.DisableRenderers(GameObject.Find(this.name + OUTLINE));
             this.EnableRenderers(GameObject.Find(this.name + FOUND));
+        }*/
+
+        public void Collect(GameObject bodyPart)
+        {
+            this.bodyPart = bodyPart;
+
+            this.DisableRenderers(GameObject.Find(this.name + OUTLINE));
+            this.EnableRenderers(GameObject.Find(this.name + FOUND));
         }
 
-
-
-        public void Uncollect()
+        public GameObject Uncollect()
         {
-            this.isCollected = false;
+            GameObject uncollectedBodyPart = this.bodyPart;
+            this.bodyPart = null;
 
             this.DisableRenderers(GameObject.Find(this.name + FOUND));
             this.EnableRenderers(GameObject.Find(this.name + OUTLINE));
+
+            return uncollectedBodyPart;
         }
 
             private void DisableRenderers(GameObject gameObject)
@@ -122,12 +127,12 @@ namespace DespairRepair
                
         public bool IsCollected()
         {
-            return this.isCollected;
+            return (this.bodyPart != null);
         }
 
         public bool IsCorrect()
         {
-            return this.isCorrectPart;
+            return (this.bodyPart != null) ? this.bodyPart.GetComponent<BodyPartObject>().isCorrect : false;
         }
     }
 }

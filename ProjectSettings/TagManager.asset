@@ -31,7 +31,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Particles
   - 
   - 
   - 
@@ -62,4 +62,7 @@ TagManager:
     locked: 0
   - name: BodyOverlay
     uniqueID: 1882317529
+    locked: 0
+  - name: Particles
+    uniqueID: 1722706629
     locked: 0
