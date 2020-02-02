@@ -15,7 +15,7 @@ public class DogAction : MonoBehaviour
         text = GameObject.FindWithTag("InfoToggle");
 
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 10;
+        Application.targetFrameRate = 20;
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class DogAction : MonoBehaviour
 
         //Resets the movement interval to allow immediate stopping for the player
         if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)
-            || (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.LeftArrow))) {
+            || (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))) {
             xMod = 0f;
         } 
         if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)
@@ -62,17 +62,41 @@ public class DogAction : MonoBehaviour
             rigidBody.position.y + yMod));
     }
 
-    void processItemCollection() {
+    //void processItemCollision() {
+    //    RaycastHit2D hit = Physics2D.Raycast(rigidBody.position, rayDirection, rayDistance);
+    //    if (hit) {
+    //        //if (hit.collider.GetComponent<BodyPart>) {
+    //        if (hit.collider.CompareTag("collection")) {
+    //            text.SetActive(true);
+    //        } else {
+    //            text.SetActive(false);
+    //        }
+    //    } else {
+    //        text.SetActive(false);
+    //    }
+    //}
+
+    void processItemCollection()
+    {
         RaycastHit2D hit = Physics2D.Raycast(rigidBody.position, rayDirection, rayDistance);
         if (hit) {
+            //if (hit.collider.GetComponent<BodyPart>) {
             if (hit.collider.CompareTag("collection")) {
                 text.SetActive(true);
             } else {
                 text.SetActive(false);
             }
+
+            if (Input.GetKeyUp(KeyCode.Space)) {
+
+                hit.collider.gameObject.SetActive(false);
+
+            }
         } else {
             text.SetActive(false);
         }
+
+        
     }
 
     void OnCollisionEnter2D(Collision2D collider) {
