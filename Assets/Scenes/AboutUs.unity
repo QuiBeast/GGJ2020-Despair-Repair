@@ -221,8 +221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: -77.1}
-  m_SizeDelta: {x: 516.8, y: 212.3}
+  m_AnchoredPosition: {x: 0.000024796, y: -91}
+  m_SizeDelta: {x: 524, y: 245.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459308158
 MonoBehaviour:
@@ -256,11 +256,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Well, not much to say about us than we''re a bunch of friends that work
-    together and wanted to experiment the game jam together...
+    together during 3 days and wanted to experiment the game jam together...
 
 
-    Oh... and also
-    Taylor is in the team!'
+    Oh...
+    and also Taylor is in the team!'
 --- !u!222 &459308159
 CanvasRenderer:
   m_ObjectHideFlags: 0
