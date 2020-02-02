@@ -188,7 +188,7 @@ public class DogAction : MonoBehaviour
     Vector2 rayDirection = Vector2.down;
     public GameObject text;
 
-    public float rayDistance = 0.6f;
+    public float rayDistance = -3f;
 
     public float speed = 0.25f;
     float xMod = 0f;
