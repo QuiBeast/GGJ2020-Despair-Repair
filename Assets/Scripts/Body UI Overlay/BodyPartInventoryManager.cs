@@ -15,16 +15,6 @@ namespace DespairRepair
             public const string LEFT_LEG_TAG = "UI-Left-Leg";
             public const string RIGHT_LEG_TAG = "UI-Right-Leg";
 
-            public enum BodyParts
-            {
-                head,
-                torso,
-                leftArm,
-                rightArm,
-                leftLeg,
-                rightLeg
-            }
-
             // Start is called before the first frame update
             void Start()
             {
@@ -34,13 +24,13 @@ namespace DespairRepair
             // Update is called once per frame
             void Update()
             {
-                this.CollectBodyPart(BodyParts.torso, false);
-                print(GetNumberOfCorrectBodyPartsCollected());
+                this.CollectBodyPart(BodyPartTypes.torso, true);
             }
 
-            public void CollectBodyPart(BodyParts bodyPart, bool isCorrectPart)
+            public void CollectBodyPart(BodyPartTypes bodyPartType, bool isCorrectPart)
             {
-                UIBodyPart part = this.GetBodyPart(bodyPart);
+                UIBodyPart part = this.GetBodyPart(bodyPartType);
+                print(part);
 
                 if (part != null && !part.IsCollected())
                 {
@@ -48,9 +38,9 @@ namespace DespairRepair
                 }
             }
 
-            public bool IsBodyPartCollected(BodyParts bodyPart)
+            public bool IsBodyPartCollected(BodyPartTypes bodyPartType)
             {
-                UIBodyPart part = this.GetBodyPart(bodyPart);
+                UIBodyPart part = this.GetBodyPart(bodyPartType);
 
                 if (part != null)
                 {
@@ -60,30 +50,18 @@ namespace DespairRepair
                 return false;
             }
 
-            private UIBodyPart GetBodyPart(BodyParts bodyPart)
+            private UIBodyPart GetBodyPart(BodyPartTypes partType)
             {
                 UIBodyPart part = null;
-
-                switch (bodyPart)
+                UIBodyPart[] partList = GameObject.FindObjectsOfType<UIBodyPart>();
+                print(this.GetComponentsInChildren<UIBodyPart>().Length);
+                foreach (UIBodyPart bodyPart in partList)
                 {
-                    case BodyParts.head:
-                        part = GameObject.FindGameObjectWithTag(HEAD_TAG).GetComponent<UIBodyPart>();
-                        break;
-                    case BodyParts.torso:
-                        part = GameObject.FindGameObjectWithTag(TORSO_TAG).GetComponent<UIBodyPart>();
-                        break;
-                    case BodyParts.leftArm:
-                        part = GameObject.FindGameObjectWithTag(LEFT_ARM_TAG).GetComponent<UIBodyPart>();
-                        break;
-                    case BodyParts.rightArm:
-                        part = GameObject.FindGameObjectWithTag(RIGHT_ARM_TAG).GetComponent<UIBodyPart>();
-                        break;
-                    case BodyParts.leftLeg:
-                        part = GameObject.FindGameObjectWithTag(LEFT_LEG_TAG).GetComponent<UIBodyPart>();
-                        break;
-                    case BodyParts.rightLeg:
-                        part = GameObject.FindGameObjectWithTag(RIGHT_LEG_TAG).GetComponent<UIBodyPart>();
-                        break;
+                    print(bodyPart.partType);
+                    if (bodyPart.partType == partType)
+                    {
+                        part = bodyPart;
+                    }
                 }
 
                 return part;

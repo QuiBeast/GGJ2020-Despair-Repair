@@ -10,6 +10,7 @@ namespace DespairRepair
         {
             private bool isCollected;
             private bool isCorrectPart;
+            public BodyPartTypes partType;
 
             private SpriteRenderer spriteRenderer;
             private Sprite collectedSprite;
@@ -22,6 +23,9 @@ namespace DespairRepair
             private const string RIGHT_ARM_COLLECTED_SPRITE = "right-arm-collected";
             private const string LEFT_LEG_COLLECTED_SPRITE = "left-leg-collected";
             private const string RIGHT_LEG_COLLECTED_SPRITE = "right-leg-collected";
+
+            private const string INCORRECT_SUFFIX = "-incorrect";
+
 
             // Start is called before the first frame update
             void Start()
@@ -42,29 +46,35 @@ namespace DespairRepair
                 this.isCollected = true;
                 this.isCorrectPart = isCorrectPart;
 
-                if (this.tag == BodyPartInventoryManager.HEAD_TAG)
+                string incorrectSuffix = "";
+                if (!isCorrectPart)
                 {
-                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + HEAD_COLLECTED_SPRITE);
+                    incorrectSuffix = INCORRECT_SUFFIX;
                 }
-                else if (this.tag == BodyPartInventoryManager.TORSO_TAG)
+
+                if (this.partType == BodyPartTypes.head)
                 {
-                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + TORSO_COLLECTED_SPRITE);
+                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + HEAD_COLLECTED_SPRITE + incorrectSuffix);
                 }
-                else if (this.tag == BodyPartInventoryManager.LEFT_ARM_TAG)
+                else if (this.partType == BodyPartTypes.torso)
                 {
-                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + LEFT_ARM_COLLECTED_SPRITE);
+                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + TORSO_COLLECTED_SPRITE + incorrectSuffix);
                 }
-                else if (this.tag == BodyPartInventoryManager.RIGHT_ARM_TAG)
+                else if (this.partType == BodyPartTypes.leftArm)
                 {
-                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + RIGHT_ARM_COLLECTED_SPRITE);
+                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + LEFT_ARM_COLLECTED_SPRITE + incorrectSuffix);
                 }
-                else if (this.tag == BodyPartInventoryManager.LEFT_LEG_TAG)
+                else if (this.partType == BodyPartTypes.rightArm)
                 {
-                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + LEFT_LEG_COLLECTED_SPRITE);
+                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + RIGHT_ARM_COLLECTED_SPRITE + incorrectSuffix);
                 }
-                else if (this.tag == BodyPartInventoryManager.RIGHT_LEG_TAG)
+                else if (this.partType == BodyPartTypes.leftLeg)
                 {
-                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + RIGHT_LEG_COLLECTED_SPRITE);
+                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + LEFT_LEG_COLLECTED_SPRITE + incorrectSuffix);
+                }
+                else if (this.partType == BodyPartTypes.rightLeg)
+                {
+                    this.spriteRenderer.sprite = Resources.Load<Sprite>(SPRITE_DIRECTORY + RIGHT_LEG_COLLECTED_SPRITE + incorrectSuffix);
                 }
 
                 //this.spriteRenderer.color = Color.red;//211,29,0
