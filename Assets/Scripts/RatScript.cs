@@ -13,10 +13,11 @@ public class RatScript : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+        processMovement();
     }
 
     void processMovement() {
-    
+        this.transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
     }
+
 }

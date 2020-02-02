@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DespairRepair;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,5 +15,16 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.CompareTag("Player")) {
+            BodyPartInventoryManager manager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
+            manager.RemoveLastBodyPart();
+            Debug.Log("Destroyed");
+        }
+
+        Debug.Log("Dead");
+        Destroy(this.gameObject);
     }
 }

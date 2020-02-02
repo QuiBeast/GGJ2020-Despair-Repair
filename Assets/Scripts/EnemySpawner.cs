@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -6,7 +8,8 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemies = new ArrayList();
+        startTime = Time.time;
+        enemies = new List<Enemy>();
     }
 
     // Update is called once per frame
@@ -16,15 +19,20 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void spawnEnemy() {
-        if (enemies.Count < maxLength) {
+        deltaTime = Time.time;
+        enemies = GameObject.FindObjectsOfType<Enemy>().ToList();
+        if (enemies.Count < maxLength && (deltaTime - startTime) > spawnDelay) {
             Enemy newEnemy = GameObject.Instantiate(enemyType);
-            Debug.Log("OMG");
-            enemies.Add(newEnemy);
+            Debug.Log("Spawning Enemy");
+            startTime = deltaTime;
         }
     }
+
+    double deltaTime = 0.0d;
+    double startTime = 0.0d;
 
     public int spawnDelay;
     public int maxLength;
     public Enemy enemyType;
-    ArrayList enemies;
+    List<Enemy> enemies;
 }
