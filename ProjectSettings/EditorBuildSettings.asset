@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BaseMapRight.unity
     guid: d19bc0cf009f5334aa6bdc2bfff9de58
+  - enabled: 1
+    path: Assets/Scenes/BaseMapLeft2.unity
+    guid: 1364bcc0729d2374eb4acb9ff1282421
+  - enabled: 1
+    path: Assets/Scenes/BaseMapLeft3.unity
+    guid: 3415e891536548446a473b30a33af026
   m_configObjects: {}
