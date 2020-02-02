@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DespairRepair;
 
 public class RatScript : Enemy
 {
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -15,8 +15,5 @@ public class RatScript : Enemy
     {
         
     }
-
-    void processMovement() {
     
-    }
 }
