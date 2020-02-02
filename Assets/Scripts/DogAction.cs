@@ -105,6 +105,9 @@ public class DogAction : MonoBehaviour
                             hit.collider.GetComponent<BodyPartObject>().GetComponent<BodyPartObject>().isCorrect);
                         hit.collider.gameObject.SetActive(false);
                     }
+                } else if (hit.collider.GetComponent<Enemy>()) {
+                    BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
+                    bodyManager.RemoveLastBodyPart();
                 } else {
                     text.SetActive(false);
                 }
