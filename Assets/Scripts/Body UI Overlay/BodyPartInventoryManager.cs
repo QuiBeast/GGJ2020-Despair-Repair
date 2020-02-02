@@ -6,18 +6,10 @@ namespace DespairRepair
 {
     public class BodyPartInventoryManager : MonoBehaviour
     {
-        public const string HEAD_TAG = "UI-Head";
-        public const string TORSO_TAG = "UI-Torso";
-        public const string LEFT_ARM_TAG = "UI-Left-Arm";
-        public const string RIGHT_ARM_TAG = "UI-Right-Arm";
-        public const string LEFT_LEG_TAG = "UI-Left-Leg";
-        public const string RIGHT_LEG_TAG = "UI-Right-Leg";
-
         private const int TOTAL_BODY_PART_COUNT = 6;
 
         private ArrayList collectedParts;
         private int correctPartCount;
-
 
         private int test = 0;
 
@@ -36,16 +28,16 @@ namespace DespairRepair
                 //this.CollectBodyPart(BodyPartTypes.head, true);
                 //this.CollectBodyPart(BodyPartTypes.torso, true);
 
-                this.CollectBodyPart(BodyPartTypes.leftArm, false);
-                this.CollectBodyPart(BodyPartTypes.rightLeg, true);
-                this.CollectBodyPart(BodyPartTypes.head, false);
-                //this.RemoveBodyPart(BodyPartTypes.head);
+                //this.CollectBodyPart(BodyPartTypes.leftArm, false);
+                //this.CollectBodyPart(BodyPartTypes.rightLeg, true);
+                //this.CollectBodyPart(BodyPartTypes.head, false);
+                //this.RemoveBodyPart(BodyPartTypes.leftArm);
                 //this.RemoveBodyPart(BodyPartTypes.torso);
                 //this.RemoveLastBodyPart();
                 //this.RemoveLastBodyPart();
 
-                print(this.AreAllBodyPartsCollected());
-                print(this.GetNumberOfCorrectBodyPartsCollected());
+                //print(this.AreAllBodyPartsCollected());
+                //print(this.GetNumberOfCorrectBodyPartsCollected());
 
                 test++;
             }
@@ -53,9 +45,7 @@ namespace DespairRepair
 
         public void CollectBodyPart(BodyPartTypes bodyPartType, bool isCorrectPart)
         {
-            //UIBodyPart part = this.GetBodyPart(bodyPartType);
-            TestUIBodyPart part = this.GetTestBodyPart(bodyPartType);
-            print("collecting");
+            UIBodyPart part = this.GetBodyPart(bodyPartType);
 
             if (part != null && !part.IsCollected())
             {
@@ -132,22 +122,6 @@ namespace DespairRepair
             UIBodyPart[] partList = GameObject.FindObjectsOfType<UIBodyPart>();
               
             foreach (UIBodyPart bodyPart in partList)
-            {
-                if (bodyPart.partType == partType)
-                {
-                    part = bodyPart;
-                }
-            }
-
-            return part;
-        }
-
-        private TestUIBodyPart GetTestBodyPart(BodyPartTypes partType)
-        {
-            TestUIBodyPart part = null;
-            TestUIBodyPart[] partList = GameObject.FindObjectsOfType<TestUIBodyPart>();
-
-            foreach (TestUIBodyPart bodyPart in partList)
             {
                 if (bodyPart.partType == partType)
                 {
