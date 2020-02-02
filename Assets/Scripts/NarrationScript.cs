@@ -15,7 +15,7 @@ public class NarrationScript : MonoBehaviour
     public int OptionSelected;
     public string levelToLoad;
     [SerializeField]
-    float screenDelay = 2.0f;
+    float screenDelay = 1.5f;
 
 
     IEnumerator ExecuteAfterTime(float time)
@@ -29,19 +29,19 @@ public class NarrationScript : MonoBehaviour
 
     public void optionSelected1()
     {
-        //TextBox.GetComponent<Text>().text = "Yummy, bones!";
+        TextBox.GetComponent<Text>().text = "Yummy, bones!";
         OptionSelected = 1;  
     }
 
     public void optionSelected2()
     {
-        //TextBox.GetComponent<Text>().text = "Isn't that where we first met?!";
+        TextBox.GetComponent<Text>().text = "Isn't that where we first met?!";
         OptionSelected = 2;
     }
 
     public void optionSelected3()
     {
-        //TextBox.GetComponent<Text>().text = "I love walks!";
+        TextBox.GetComponent<Text>().text = "I love walks!";
         OptionSelected = 3;
     }
 
@@ -64,7 +64,7 @@ public class NarrationScript : MonoBehaviour
 
     private void Start()
     {
-        Option03.SetActive(false);
+           
     }
 
     void Update()
@@ -85,7 +85,7 @@ public class NarrationScript : MonoBehaviour
             }
             else if (OptionSelected == 3)
             {
-                //Option03.SetActive(true);
+                //Option03.SetActive(false);
                 levelToLoad = "BaseMapRight";
                 StartCoroutine(ExecuteAfterTime(screenDelay));
             }
@@ -106,8 +106,6 @@ public class NarrationScript : MonoBehaviour
                 Option06.SetActive(false);
                 StartCoroutine(ExecuteAfterTime(screenDelay));
             }
-
-            TextBox.SetActive(false);
             Option01.SetActive(false); 
             Option02.SetActive(false); 
             Option03.SetActive(false); 
