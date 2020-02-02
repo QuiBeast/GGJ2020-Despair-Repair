@@ -44,25 +44,31 @@ public class DogAction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             xMod = -speed;
             yMod = 0f;
+            anim.SetFloat("Horizontal View", xMod);
+            anim.SetFloat("Vertical View", yMod);
             rayDirection = Vector2.left;
         } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
             xMod = speed;
             yMod = 0f;
+            anim.SetFloat("Horizontal View", xMod);
+            anim.SetFloat("Vertical View", yMod);
             rayDirection = Vector2.right;
         } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
             yMod = speed;
             xMod = 0f;
+            anim.SetFloat("Horizontal View", xMod);
+            anim.SetFloat("Vertical View", yMod);
             rayDirection = Vector2.up;
         } else if (Input.GetKeyDown(KeyCode.DownArrow))  {
             yMod = -speed;
             xMod = 0f;
+            anim.SetFloat("Horizontal View", xMod);
+            anim.SetFloat("Vertical View", yMod);
             rayDirection = Vector2.down;
         }
 
         anim.SetFloat("Horizontal", xMod);
         anim.SetFloat("Vertical", yMod);
-        anim.SetFloat("Horizontal View", xMod);
-        anim.SetFloat("Vertical View", yMod);
 
         // Moves the rigid body based on things
         rigidBody.MovePosition(new Vector2(
