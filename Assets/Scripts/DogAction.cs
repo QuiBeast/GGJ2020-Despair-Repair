@@ -22,6 +22,13 @@ public class DogAction : MonoBehaviour
 
         //Set Tag
         gameObject.tag = "Player";
+
+        WWW www = new WWW(Application.dataPath + "/FX/bark.wav");
+        happySfx = www.GetAudioClip();
+        //happySfx = new WWW(Application.dataPath + "/FX/bark.wav").GetAudioClip();
+
+        GetComponent<AudioSource>().playOnAwake = false;
+
     }
 
     // Update is called once per frame
@@ -123,18 +130,34 @@ public class DogAction : MonoBehaviour
                 GameObject bodyPart = hit.collider.gameObject;
                 BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
                 bodyManager.CollectBodyPart(bodyPart);
+
+                GetComponent<AudioSource>().clip = happySfx;
+                print(GetComponent<AudioSource>().isPlaying);
+                if (!GetComponent<AudioSource>().isPlaying)
+                {
+                    GetComponent<AudioSource>().Play();
+                }
                 hit.collider.gameObject.SetActive(false);
+
             }
         }
     }
 
     private void processEnemyCollision(RaycastHit2D hit)
     {
+        print("ENEMY");
         BodyPartInventoryManager bodyManager = GameObject.FindObjectOfType<BodyPartInventoryManager>();
         GameObject bodyPart = bodyManager.RemoveLastBodyPart();
         if (bodyPart != null)
         {
             bodyPart.SetActive(true);
+        }
+
+        GetComponent<AudioSource>().clip = happySfx;
+        print(GetComponent<AudioSource>().isPlaying);
+        if (!GetComponent<AudioSource>().isPlaying)
+        {
+            GetComponent<AudioSource>().Play();
         }
     }
 
@@ -170,4 +193,7 @@ public class DogAction : MonoBehaviour
     public float speed = 0.25f;
     float xMod = 0f;
     float yMod = 0f;
+
+    AudioClip painSfx;
+    AudioClip happySfx;
 }
